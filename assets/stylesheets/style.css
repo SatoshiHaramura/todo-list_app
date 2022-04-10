@@ -1,0 +1,44 @@
+body {
+  width: 500px;
+  margin: 0 auto;
+}
+
+input {
+  width: 370px;
+}
+
+.table {
+  table-layout: fixed;
+  width: 450px;
+}
+
+.table td {
+  word-wrap: break-word;
+}
+
+.button {
+  text-align: center;
+  width: 60px;
+}
+
+button {
+  display: inline-block;
+  margin: 1px auto;
+  width: 60px;
+  max-width: 100%;
+  padding: 1px;
+  background-color: #5bb4ff;
+  border: solid 1px transparent;
+  border-radius: 15px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: .25s;
+}
+
+button:focus,
+button:hover {
+  background-color: white;
+  border-color: currentColor;
+  color: #5bb4ff;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo リスト</title>
+    <link href="../assets/stylesheets/style.css" rel="stylesheet" type="text/css">
+    <script src="../javascript/index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  </head>
+  <body>
+    <h1>ToDo リスト</h1>
+    <div id="app">
+      <input type="text" v-model="newItem" autofocus autocomplete="off" placeholder="ToDoを入力して下さい" @keyup.shift.enter="appendItem" @keyup.esc="cancelAppend" @blur="cancelAppend">
+      <table class="table">
+        <tr v-for="(todo, index) in todos">
+          <td v-if="(editingId !== index)" @click="editingItem(index)">{{ todo }}</td>
+          <td v-else><input type="text" v-model="beforeEditCache" @keyup.shift.enter="editedItem(index)" @keyup.esc="initializeEditFlag" @blur="initializeEditFlag"></td>
+          <td class="button"><button @click="deleteItem(index)">削除</button></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
