@@ -45,6 +45,7 @@ const app = new Vue({
     deleteItem (index) {
       this.todos.splice(index, 1)
       this.saveItems()
+      this.initializeEditFlag()
     },
     saveItems () {
       const parsed = JSON.stringify(this.todos)
