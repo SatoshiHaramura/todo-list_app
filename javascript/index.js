@@ -32,7 +32,7 @@ const app = new Vue({
       this.editingId = index
       this.beforeEditCache = this.todos[index]
     },
-    editedItem (index) {
+    updateItem (index) {
       const invalidItem = this.beforeEditCache && this.beforeEditCache.trim()
       if (!invalidItem) {
         this.initializeEditFlag()

@@ -16,7 +16,7 @@
       <table class="table">
         <tr v-for="(todo, index) in todos">
           <td v-if="(editingId !== index)" @click="editingItem(index)">{{ todo }}</td>
-          <td v-else><input type="text" v-model="beforeEditCache" @keyup.shift.enter="editedItem(index)" @keyup.esc="initializeEditFlag" @blur="initializeEditFlag"></td>
+          <td v-else><input type="text" v-model="beforeEditCache" @keyup.shift.enter="updateItem(index)" @keyup.esc="initializeEditFlag" @blur="initializeEditFlag"></td>
           <td class="button"><button @click="deleteItem(index)">削除</button></td>
         </tr>
       </table>
