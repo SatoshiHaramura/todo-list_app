@@ -5,7 +5,7 @@ const app = new Vue({
       newItem: '',
       todos: [],
       editingId: null,
-      beforeEditCache: ''
+      tmpItem: ''
     }
   },
   mounted () {
@@ -30,22 +30,22 @@ const app = new Vue({
     },
     editingItem (index) {
       this.editingId = index
-      this.beforeEditCache = this.todos[index]
+      this.tmpItem = this.todos[index]
     },
     updateItem (index) {
-      const invalidItem = this.beforeEditCache && this.beforeEditCache.trim()
+      const invalidItem = this.tmpItem && this.tmpItem.trim()
       if (!invalidItem) {
-        this.initializeEditFlag()
+        this.cancelEdit()
         return
       }
-      this.todos[index] = this.beforeEditCache
+      this.todos[index] = this.tmpItem
       this.saveItems()
-      this.initializeEditFlag()
+      this.cancelEdit()
     },
     deleteItem (index) {
       this.todos.splice(index, 1)
       this.saveItems()
-      this.initializeEditFlag()
+      this.cancelEdit()
     },
     saveItems () {
       const parsed = JSON.stringify(this.todos)
@@ -54,9 +54,9 @@ const app = new Vue({
     cancelAppend () {
       this.newItem = ''
     },
-    initializeEditFlag () {
+    cancelEdit () {
       this.editingId = null
-      this.beforeEditCache = ''
+      this.tmpItem = ''
     }
   }
 })
