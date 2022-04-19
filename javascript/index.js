@@ -19,8 +19,7 @@ const app = new Vue({
   },
   methods: {
     appendItem () {
-      const invalidItem = this.newItem && this.newItem.trim()
-      if (!invalidItem) {
+      if (!this.newItem) {
         this.cancelAppend()
         return
       }
@@ -33,8 +32,7 @@ const app = new Vue({
       this.tmpItem = this.todos[index]
     },
     updateItem (index) {
-      const invalidItem = this.tmpItem && this.tmpItem.trim()
-      if (!invalidItem) {
+      if (!this.tmpItem) {
         this.cancelEdit()
         return
       }
