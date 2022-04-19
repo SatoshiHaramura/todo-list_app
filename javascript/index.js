@@ -19,26 +19,28 @@ const app = new Vue({
   },
   methods: {
     appendItem () {
-      if (!this.newItem) {
+      if (this.newItem) {
+        this.todos.push(this.newItem)
+        this.saveItems()
+        this.newItem = ''
+      } else {
         this.cancelAppend()
         return
       }
-      this.todos.push(this.newItem)
-      this.saveItems()
-      this.newItem = ''
     },
     editingItem (index) {
       this.editingId = index
       this.tmpItem = this.todos[index]
     },
     updateItem (index) {
-      if (!this.tmpItem) {
+      if (this.tmpItem) {
+        this.todos[index] = this.tmpItem
+        this.saveItems()
+        this.cancelEdit()
+      } else {
         this.cancelEdit()
         return
       }
-      this.todos[index] = this.tmpItem
-      this.saveItems()
-      this.cancelEdit()
     },
     deleteItem (index) {
       this.todos.splice(index, 1)
