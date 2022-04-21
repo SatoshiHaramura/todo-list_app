@@ -15,8 +15,8 @@
       <input type="text" v-model.trim="newItem" autofocus autocomplete="off" placeholder="ToDoを入力して下さい" @keyup.shift.enter="appendItem" @keyup.esc="cancelAppend" @blur="cancelAppend">
       <table class="table">
         <tr v-for="(todo, index) in todos">
-          <td v-if="(editingId !== index)" @click="editingItem(index)">{{ todo }}</td>
-          <td v-else><input type="text" v-model.trim="tmpItem" @keyup.shift.enter="updateItem(index)" @keyup.esc="cancelEdit" @blur="cancelEdit"></td>
+          <td v-if="(editingId !== index)" @click="editItem(index)">{{ todo }}</td>
+          <td v-else><input type="text" v-model.trim="editingItem" @keyup.shift.enter="updateItem(index)" @keyup.esc="cancelEdit" @blur="cancelEdit"></td>
           <td class="button"><button @click="deleteItem(index)">削除</button></td>
         </tr>
       </table>

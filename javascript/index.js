@@ -4,8 +4,8 @@ const app = new Vue({
     return {
       newItem: '',
       todos: [],
-      editingId: null,
-      tmpItem: ''
+      editingId: undefined,
+      editingItem: ''
     }
   },
   mounted () {
@@ -22,25 +22,19 @@ const app = new Vue({
       if (this.newItem) {
         this.todos.push(this.newItem)
         this.saveItems()
-        this.newItem = ''
-      } else {
-        this.cancelAppend()
-        return
       }
+      this.cancelAppend()
     },
-    editingItem (index) {
+    editItem (index) {
       this.editingId = index
-      this.tmpItem = this.todos[index]
+      this.editingItem = this.todos[index]
     },
     updateItem (index) {
-      if (this.tmpItem) {
-        this.todos[index] = this.tmpItem
+      if (this.editingItem) {
+        this.todos[index] = this.editingItem
         this.saveItems()
-        this.cancelEdit()
-      } else {
-        this.cancelEdit()
-        return
       }
+      this.cancelEdit()
     },
     deleteItem (index) {
       this.todos.splice(index, 1)
@@ -56,7 +50,7 @@ const app = new Vue({
     },
     cancelEdit () {
       this.editingId = null
-      this.tmpItem = ''
+      this.editingItem = ''
     }
   }
 })
