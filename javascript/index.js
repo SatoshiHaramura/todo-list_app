@@ -4,7 +4,7 @@ const app = new Vue({
     return {
       newItem: '',
       todos: [],
-      editingId: undefined,
+      editingIndex: undefined,
       editingItem: ''
     }
   },
@@ -26,7 +26,7 @@ const app = new Vue({
       this.cancelAppend()
     },
     editItem (index) {
-      this.editingId = index
+      this.editingIndex = index
       this.editingItem = this.todos[index]
     },
     updateItem (index) {
@@ -49,7 +49,7 @@ const app = new Vue({
       this.newItem = ''
     },
     cancelEdit () {
-      this.editingId = null
+      this.editingIndex = undefined
       this.editingItem = ''
     }
   }
